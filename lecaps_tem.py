@@ -102,10 +102,10 @@ plt.gca().yaxis.set_major_locator(plt.MultipleLocator(0.1))
 plt.xlim([datetime(2024, 3, 14), datetime.now()])
 
 # tabla 
-column_labels = ["Ticker", "TEM al ultimo día hábil (%)"]
+column_labels = ["Ticker", "Último TEM (%)"]
 table = plt.table(cellText=final_tem_values, colLabels=column_labels, loc='center right', colWidths=[0.15, 0.15], cellLoc='center', bbox=[1.05, 0, 0.3, 1])
-table.auto_set_font_size(False)  # Desactivar el ajuste automático del tamaño de la fuente
-table.set_fontsize(12)
+table.auto_set_font_size(False)  
+table.set_fontsize(10)
 
 plt.subplots_adjust(right=0.75)
 
