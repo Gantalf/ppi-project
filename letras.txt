@@ -1,0 +1,4 @@
+No encontre info para las siguientes:
+#{"ticker": "S31O4", "vencimiento": None, "precio_estimado": None}, {"ticker": "S31L5", "vencimiento": None, "precio_estimado": None}, 
+#{"ticker": "S30Y5", "vencimiento": None, "precio_estimado": None},  {"ticker": "S30S5", "vencimiento": None, "precio_estimado": None},
+# {"ticker": "S28A5", "vencimiento": None, "precio_estimado": None},
