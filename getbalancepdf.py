@@ -95,7 +95,7 @@ def get_balance_links(cuit_number, start_year=2022):
         browser.close()
         return balance_links
 
-def get_pdf_from_balance_page(balance_links):
+def get_pdf_from_balance_page(balance_links, name_company):
     pdf_links = {}
     download_directory = "./downloads"  # Carpeta para guardar los archivos descargados
     os.makedirs(download_directory, exist_ok=True)
@@ -139,7 +139,7 @@ def get_pdf_from_balance_page(balance_links):
                                 print(f"No se encontró el botón de descarga para {year} {quarter}")
                         download = download_info.value
                         
-                        file_path = os.path.join(download_directory, f"{year}_{quarter}_Balance.pdf")
+                        file_path = os.path.join(download_directory, f"{name_company}_{year}_{quarter}_Balance.pdf")
                         download.save_as(file_path)
                         print(f"Archivo descargado y guardado en: {file_path}")
                         
