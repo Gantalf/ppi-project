@@ -222,7 +222,7 @@ with open("fragmentos_agrometal_2024_q1.json", "r") as f:
 
 fragmentos_dict = {fragmento["metadata"]["fragmento_id"]: fragmento for fragmento in fragmentos_local}
 
-pregunta_usuario = "¿Cuál fue el High Spenders de Agrometal en el primer trimestre de 2024?"
+pregunta_usuario = "¿Cuál fue el enterprise Value/Revenue y el enterprise Value/EBITDA de Agrometal en el primer trimestre de 2024, el precio de la accion es 60 ars?"
 fragmentos_relevantes = buscar_fragmentos_relevantes(pregunta_usuario)
 respuesta = consulta_openai(pregunta_usuario, fragmentos_relevantes)
 print("Pregunta:", pregunta_usuario)

@@ -13,8 +13,8 @@ def determine_quarter(date):
     elif date.month in [10, 11, 12]:
         return "Q4"
 
-def get_balance_links(cuit_number, start_year=2022):
-    url = f"https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/{cuit_number}?fdesde=31/12/{start_year}"
+def get_balance_links(cuit_number, start_year=2024):
+    url = f"https://www.cnv.gov.ar/SitioWeb/Empresas/Empresa/{cuit_number}?fdesde=01/01/{start_year}"
     balance_links = {}
 
     fecha_cierre_regex = re.compile(r"FECHA CIERRE: (\d{4}-\d{2}-\d{2})")
@@ -162,11 +162,49 @@ def get_pdf_from_balance_page(balance_links, name_company):
 
 
 # Ejemplo de uso:
-cuit_number = "30503087967"  # Reemplaza con el CUIT deseado
-balance_links = get_balance_links(cuit_number)
+cuits_number = [
+    # "30500530851",
+    # "30500003193",
+    # "30500010084",
+    # "30715471953",
+    # "30704962807",
+    "30522780606",
+    "30509300700",
+    "30617442937",
+    "30526552659",
+    "30546689979",
+    "30576124275",
+    "33650305499",
+    "30663148776",
+    "30516888241",
+    "33526316989",
+    "30657863056",
+    "30657862068",
+    "30655116202",
+    "30578036071",
+    "30639453738",
+    "30525322749"
 
-pdf_links = get_pdf_from_balance_page(balance_links)
+]  # Reemplaza con el CUIT deseado
 
-# Mostrar las rutas de los archivos PDF de los balances seleccionados
-for period, path in pdf_links.items():
-    print(f"{period}: {path}")
+# balance_links = get_balance_links(cuits_number)
+
+# pdf_links = get_pdf_from_balance_page(balance_links)
+
+# # Mostrar las rutas de los archivos PDF de los balances seleccionados
+# for period, path in pdf_links.items():
+#     print(f"{period}: {path}")
+
+# Ejecutar la búsqueda y descarga de balances para cada CUIT
+for cuit in cuits_number:
+    print(f"Procesando CUIT: {cuit}")
+    
+    balance_links = get_balance_links(cuit)
+    if balance_links:
+        pdf_links = get_pdf_from_balance_page(balance_links, cuit)
+        
+        # Mostrar las rutas de los archivos PDF de los balances seleccionados
+        for period, path in pdf_links.items():
+            print(f"{period}: {path}")
+    else:
+        print(f"No se encontraron balances para el CUIT {cuit}.")
